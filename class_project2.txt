@@ -1,0 +1,13 @@
+import os
+import numpy as np
+import re
+import
+
+def split_equation(equation):
+  '''split into reactants and products at the ->'''
+  reactants = equation.split("->")[0]
+  products = equation.split("->")[1]
+
+  #find unique elements in the equation for both reactants and products
+  unique_reactants = reactants.unique()
+
