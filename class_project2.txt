@@ -4,10 +4,16 @@ import re
 import
 
 def split_equation(equation):
-  '''split into reactants and products at the ->'''
-  reactants = equation.split("->")[0]
+  '''split into reactants and products at the -> or ='''
+  reactants = equation.split("->" or )[0]
   products = equation.split("->")[1]
 
   #find unique elements in the equation for both reactants and products
   unique_reactants = reactants.unique()
+
+  #make an empty list ie matrices
+    
+  #np array with shape unique_reactants
+  matrix_Array = np.zeros((len(unique_reactants), len(reactants) + len(products)))
+
 
