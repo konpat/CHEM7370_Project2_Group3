@@ -16,4 +16,8 @@ def split_equation(equation):
   #np array with shape unique_reactants
   matrix_Array = np.zeros((len(unique_reactants), len(reactants) + len(products)))
 
-
+  for i, unique_reactant in unique_reactants:
+  for j,pro_reacts in (reactants + products):
+  #count no. of occurrences of unique_reactant in the pro_reacts array.
+    number = pro_reacts.count(unique_reactant) 
+    matrix_Array[i,j] = number #change it to matrix ie 2D array
