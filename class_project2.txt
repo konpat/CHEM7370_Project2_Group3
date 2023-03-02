@@ -3,21 +3,25 @@ import numpy as np
 import re
 import
 
+
 def split_equation(equation):
-  '''split into reactants and products at the -> or ='''
-  reactants = equation.split("->" or )[0]
-  products = equation.split("->")[1]
+  reactants = (equation.split("->")[0] 
+               if "->" in equation else equation.split("=")[0]).split("+")
+  products = (equation.split("->")[1] 
+              if "->" in equation else equation.split("=")[1]).split("+") 
+  return reactants , products
 
-  #find unique elements in the equation for both reactants and products
-  unique_reactants = reactants.unique()
+eq = 'H2 + O2 = CO2 + H2O'
+equation = 'H2 + O2 = H2O'
 
-  #make an empty list ie matrices
-    
-  #np array with shape unique_reactants
-  matrix_Array = np.zeros((len(unique_reactants), len(reactants) + len(products)))
+#print(split_equation(eq))
+reacts, prods = split_equation(eq)
+reacts = [x.strip() for x in reacts]
+prods = [x.strip() for x in prods]
+u_reacts = list(set("".join( reacts + prods)))
+#print(u_reacts)
+#list_of_strings = ['a','a','c','d','e','c','f']
+#uniques = set(list_of_strings)
+#print(uniques)
+      
 
-  for i, unique_reactant in unique_reactants:
-  for j,pro_reacts in (reactants + products):
-  #count no. of occurrences of unique_reactant in the pro_reacts array.
-    number = pro_reacts.count(unique_reactant) 
-    matrix_Array[i,j] = number #change it to matrix ie 2D array
