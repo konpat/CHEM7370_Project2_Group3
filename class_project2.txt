@@ -23,5 +23,17 @@ u_reacts = list(set("".join( reacts + prods)))
 #list_of_strings = ['a','a','c','d','e','c','f']
 #uniques = set(list_of_strings)
 #print(uniques)
+
+#matrix Array with the coefficients,reactants and products
+matrix_array = np.zeros((len(u_reacts),len(reacts + prods))) #dimension of the matrix (())
+#populating the matrix with the respective items
+for i,u in enumerate(u_reacts): #lists the elements and their indexes
+    #print(i,u)
+    for j,cpd in enumerate(reacts + prods):
+        #print(j,cpd)
+        num_of_elems = cpd.count(u) #count the number of times u appears in k
+        #print(num_of_elems)
+        matrix_array[i, j] = num_of_elems #populate the matrix with the indexes of the u & cpds 
+print(matrix_array) #rows = u columns = cpd if element in the row appears in the column or not
       
 
