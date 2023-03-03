@@ -60,7 +60,17 @@ x = np.linalg.lstsq(matrix_array.T, h_vector, rcond=None)[0]
 print(x)
 
 
-
+# Print the balanced equation
+balanced_equation = ''
+for j, u in enumerate(u_reacts):
+  coeff = x[j]
+  if coeff == 1:
+    balanced_equation += u
+  else:
+    balanced_equation += '{:.0f}{}'.format(coeff, u)
+  if j < len(u_reacts) - 1:
+    balanced_equation += ' + '
+print(balanced_equation)
 
 
 
