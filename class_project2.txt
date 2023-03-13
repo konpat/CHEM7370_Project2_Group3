@@ -1,7 +1,8 @@
 import os
 import numpy as np
 import re
-import
+import scipy 
+
 
 
 def split_equation(equation):
